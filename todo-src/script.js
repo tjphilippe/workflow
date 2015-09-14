@@ -10,6 +10,7 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("in add");
     if ($scope.newItem !== ""){
       $scope.todos.push($scope.newItem);
+      $scope.priorities.push("Low");
       $scope.newItem = "";
     }
   }
@@ -18,8 +19,24 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("in delete");
     var index = $scope.todos.indexOf(item);
     $scope.todos.splice(index, 1);
+    $scope.priorities.splice(index, 1);
+  }
+
+  $scope.priorities=["High","Low"];
+  $scope.prioritizeItem= function(item, priority){
+    console.log("in prioritize");
+    var index = $scope.todos.indexOf(item);
+    if(priority ==="1"){
+      $scope.priorities[index]="High";
+    }
+    else if(priority==="2"){
+      $scope.priorities[index]="Med";
+    } else {
+      $scope.priorities[index]="Low";
+    }
   }
     
+
   
 });
 
