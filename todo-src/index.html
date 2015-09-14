@@ -3,12 +3,23 @@
 
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
+ <link rel="stylesheet" href="http://silviomoreto.github.io/bootstrap-select/bootstrap-select.min.css">
+   
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   
+   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="./bootstrap-select.js"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+
+    <style>
+ .fontawesome-select {
+    font-family: 'FontAwesome', 'Helvetica';
+}
+    </style>
   </head>
 
   <body ng-app="app">
@@ -21,15 +32,31 @@
            
           <span class="input-group-btn">
             <!-- <div class="btn btn-default" style='display: inline'>-->
-            <button class="btn btn-default" type="button">
-             <select>
-          <option>Hello<span class="glyphicon glyphicon-flag" style='color:black'></span></option>
-          <option data-icon="glyphicon-flag"><span class="glyphicon glyphicon-flag" style='color:blue'></span></option>
-          <option><span class="glyphicon glyphicon-flag" style='color:red'></span></option>
-        </select>
-           <!-- </div> -->
-         </button>
-            <button class="btn btn-default" type="button" ng-click="addItem()">
+           <!-- <button class="btn btn-default" type="button"> 
+         <select class="fontawesome-select">
+    <option value="icon-home"><font style="color:red">&#9873;</font></option>
+    <option value="icon-road"><font style="color:red">&#xf11d;</font></option>
+</select>
+</button> -->
+           <!--<button class="btn btn-default" type="button"> -->
+           <!--  <select class="selectpicker" data-width="75px">
+          <!--<option><span class="glyphicon glyphicon-flag" style='color:black'></span></option>- ->
+          <option style='color: white' data-icon="glyphicon-flag"><button><span class="glyphicon glyphicon-flag"></span></button></option>
+          <option style='color: blue' data-icon="glyphicon-flag"><button><span class="glyphicon glyphicon-flag"></span></button></option>
+          <option style='color: red' data-icon="glyphicon-flag"><button><span class="glyphicon glyphicon-flag"></span></button></option>
+         <!-- <option><span class="glyphicon glyphicon-flag" style='color:red'></span></option>- ->
+        </select> -->
+           
+       <!-- </button> -->
+<select class="selectpicker" data-width="110px" ng-model="newPriority">
+<option style='color: yellow' data-icon="glyphicon-flag"><span class="glyphicon glyphicon-flag" value='1'>Low</span></option>
+          <option ng-selected="selected" style='color: blue' data-icon="glyphicon-flag" value='2'><span class="glyphicon glyphicon-flag">Normal</span></option>
+          <option style='color: red' data-icon="glyphicon-flag" value='3'><span class="glyphicon glyphicon-flag">High</span></option>
+</select>
+           
+        </button> 
+
+            <button class="btn btn-default" type="button" ng-click="addItem(); prioritizeItem()">
               Add
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
@@ -44,15 +71,19 @@
           
           <span>{{do}}</span>
 
-          <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
+          <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)" ng-click="deleteItem(do)">
             <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
           </button>
 <!--<span class="glyphicon glyphicon-flag pull-right " aria-hidden="true"></span>-->
           
 
+
         </li>
       </ul>
     </div>
+
+
+
     
   </body>
 

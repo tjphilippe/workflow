@@ -5,12 +5,12 @@ var myApp = angular.module('app', []);
 myApp.controller('MainCtrl', function ($scope){
   $scope.todos = ["Learn Angular", "Learn node"];
   $scope.newItem = "";
+  $scope.priority='';
   
   $scope.addItem = function(){
     console.log("in add");
     if ($scope.newItem !== ""){
       $scope.todos.push($scope.newItem);
-      $scope.priorities.push("Low");
       $scope.newItem = "";
     }
   }
@@ -23,22 +23,29 @@ myApp.controller('MainCtrl', function ($scope){
   }
 
   $scope.priorities=["High","Low"];
-  $scope.prioritizeItem= function(item, priority){
+  $scope.prioritizeItem= function(){
     console.log("in prioritize");
-    var index = $scope.todos.indexOf(item);
-    if(priority ==="1"){
-      $scope.priorities[index]="High";
+    if($scope.priority ==="1"){
+      $scope.priorities.push($scope.priority);
+      $scope.priority = "";
+     // $scope.priorities[index]="High";
     }
-    else if(priority==="2"){
-      $scope.priorities[index]="Med";
+    else if($scope.priority==="2"){
+      //$scope.priorities[index]="Med";
+         $scope.priorities.push($scope.priority);
+      $scope.priority = "";
     } else {
-      $scope.priorities[index]="Low";
+      //$scope.priorities[index]="Low";
+      $scope.priorities.push("3");
+      $scope.priority = "";
     }
+    $scope.priorities.toString();
   }
     
 
   
 });
+
 
 /*************************
  * Homework (not rly):
